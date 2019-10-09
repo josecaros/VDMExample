@@ -13,8 +13,8 @@ class Test
     terminal: Terminal:= new Terminal({bus1,bus3}, {p1|-> {con1}, p2|-> {con1}});
 
   values
-    p1: Terminal`Periodo = mk_token("5am - 9am");
-    p2: Terminal`Periodo = mk_token("9am - 1pm");
+    p1: Terminal`Periodo = mk_token("05:00am - 05:20am");
+    p2: Terminal`Periodo = mk_token("05:20am - 05:40am");
 
   operations
     public Run:() ==> set of Terminal`Periodo * Controlador
