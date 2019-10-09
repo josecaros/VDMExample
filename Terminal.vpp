@@ -1,0 +1,9 @@
+class Terminal
+  types
+    Periodo = token;
+
+    instance variables
+      buses: set of Bus;
+      rutina: map Periodo to set of Controlador;
+
+end Terminal

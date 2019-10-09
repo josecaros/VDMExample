@@ -1,0 +1,8 @@
+class Controlador
+  types
+    public Ocupacion  = <Supervisor> |<Gerente> |<Administrador>;
+
+  instance variables
+    cargo: set of Ocupacion;
+
+end Controlador
