@@ -1,0 +1,9 @@
+class Bus
+  types
+    public cadena = seq of char;
+
+  instance variables
+    idBus: cadena;
+    reqPiloto: Piloto;
+    reqCopiloto: CoPiloto;
+end Bus

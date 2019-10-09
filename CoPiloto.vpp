@@ -1,0 +1,4 @@
+class CoPiloto
+  instance variables
+    idCopiloto: nat1;
+end CoPiloto

@@ -1,0 +1,5 @@
+class Piloto
+  instance variables
+    idPiloto: nat1;
+
+end Piloto
