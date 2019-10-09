@@ -4,6 +4,19 @@ class Bus
 
   instance variables
     idBus: cadena;
+    reqControlador: Controlador`Ocupacion;
     reqPiloto: Piloto;
     reqCopiloto: CoPiloto;
+
+  operations
+    public Bus: Controlador`Ocupacion * cadena * Piloto * CoPiloto ==> Bus
+      Bus (cont, cad, pilo, copilo) ==
+      (reqControlador:=cont;
+      idBus:=cad;
+      reqPiloto:=pilo;
+      reqCopiloto:=copilo);
+
+    public GetReqControlador:() ==> Controlador`Ocupacion
+      GetReqControlador() == return reqControlador;
+
 end Bus

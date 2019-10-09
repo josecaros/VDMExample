@@ -5,4 +5,12 @@ class Controlador
   instance variables
     cargo: set of Ocupacion;
 
+  operations
+    public Controlador: set of Ocupacion ==> Controlador
+    Controlador(cn) == cargo:= cn;
+
+    public GetCargo: () ==> set of Ocupacion
+      GetCargo() == return cargo;
+
+
 end Controlador

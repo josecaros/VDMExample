@@ -1,0 +1,26 @@
+class Test
+  instance variables
+    pilo1: Piloto:= new Piloto("P001");
+    pilo2: Piloto:= new Piloto("P002");
+    coPi1: CoPiloto:= new CoPiloto("CC001");
+    coPi2: CoPiloto:= new CoPiloto("CC002");
+    bus1: Bus:= new Bus(<Supervisor>, "B001", pilo1, coPi2);
+    bus2: Bus:= new Bus(<Supervisor>, "B001", pilo1, coPi1);
+    bus3: Bus:= new Bus(<Supervisor>, "B001", pilo2, coPi2);
+
+    con1: Controlador := new Controlador({<Supervisor>});
+
+    terminal: Terminal:= new Terminal({bus1,bus3}, {p1|-> {con1}, p2|-> {con1}});
+
+  values
+    p1: Terminal`Periodo = mk_token("5am - 9am");
+    p2: Terminal`Periodo = mk_token("9am - 1pm");
+
+  operations
+    public Run:() ==> set of Terminal`Periodo * Controlador
+      Run() ==
+      let periodos = terminal.ControladoresEnTerminal(con1),
+        controlador = terminal.BusesonTerminal(bus1,p1)
+        in
+        return mk_(periodos, controlador);
+end Test

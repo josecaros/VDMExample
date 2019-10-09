@@ -1,10 +1,40 @@
 class Terminal
   types
-    Periodo = token;
+    public Periodo = token;
 
     instance variables
       buses: set of Bus;
       rutina: map Periodo to set of Controlador;
-      
+
+
+    functions
+      TerminalInv: set of Bus* map Periodo to set of Controlador -> bool
+      TerminalInv(bu, con) ==
+        (forall p in set dom con & con(p) <> {}) and
+          (forall a in set bu &
+              forall p in set dom con &
+                exists controlador in set con(p)&
+                a.GetReqControlador() in set controlador.GetCargo());
+
+    operations
+      public BusesonTerminal: Bus * Periodo ==> Controlador
+      BusesonTerminal(a,p) ==
+        let controlador in set rutina(p) be st
+        a.GetReqControlador() in set controlador.GetCargo() in return controlador
+        pre a in set buses and p in set dom rutina
+        post let controlador = RESULT in controlador in set rutina(p) and
+        a.GetReqControlador() in set controlador.GetCargo();
+
+      public ControladoresEnTerminal: Controlador ==> set of Periodo
+      ControladoresEnTerminal(ex) ==
+        return {p| p in set dom rutina &
+        ex in set rutina(p)};
+
+      public Terminal: set of Bus * map Periodo to set of Controlador ==> Terminal
+      Terminal(bu, rut) ==
+        (buses:=bu;
+        rutina := rut)
+        pre TerminalInv(bu, rut);
+
 
 end Terminal
